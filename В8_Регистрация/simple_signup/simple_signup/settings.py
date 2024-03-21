@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
+    'project_D9_mail',
+
 ]
 
 MIDDLEWARE = [
@@ -137,6 +140,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #LOGIN_URL = 'sign/login/'
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -150,3 +154,13 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+# D8.5
+ACCOUNT_FORMS = {'signup': 'sign.models.BasicSignupForm'}
+
+# D9.2
+EMAIL_HOST = 'smtp.yandex.ru'  # адрес сервера Яндекс-почты для всех один и тот же
+EMAIL_PORT = 465  # порт smtp сервера тоже одинаковый
+EMAIL_HOST_USER = 'danilapanasenko0'  # ваше имя пользователя, например, если ваша почта user@yandex.ru, то сюда надо писать user, иными словами, это всё то что идёт до собаки
+EMAIL_HOST_PASSWORD = 'wmduyfxitdwfachh'  # пароль от почты
+EMAIL_USE_SSL = True  # Яндекс использует ssl, подробнее о том, что это, почитайте в дополнительных источниках, но включать его здесь обязательно
